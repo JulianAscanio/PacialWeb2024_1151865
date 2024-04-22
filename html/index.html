@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
     <link rel="stylesheet" href="../css/index.css">
-    <title>Document</title>
 </head>
 <body>
-    <div id="login-form">
-        <img src="../img/logoufps.jpg" class="logo">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo">
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="password">
-        <input type="submit" value="Ingresar">
+    <div class="container">
+        <form id="login-form">
+            <img src="../img/logoufps.jpg" class="logo">
+            <label for="codigo" class="field-label">Código de Estudiante:</label>
+            <input type="text" id="codigo" name="codigo" class="text-field" required>
+            <label for="password" class="field-label">Contraseña:</label>
+            <input type="password" id="password" name="password" class="text-field" required>
+            <button id="ingresar" class="submit-button">Ingresar</button>
+            <p id="mensajeError" class="error-message"></p>
+        </form>
     </div>
+    <script src="../js/index.js"></script>
 </body>
 </html>
+
+
