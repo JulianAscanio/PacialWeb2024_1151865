@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) {
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
         return;
     }
     const codigoEstudiante = user.codigo;
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error('Error al obtener las notas:', error);
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
 
     function mostrarDatosEstudiante(estudiante) {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         notas.forEach(asignatura => {
 
             const definitiva = calcularDefinitiva(asignatura);
-            
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${asignatura.nombre}</td>
@@ -68,15 +68,16 @@ document.addEventListener("DOMContentLoaded", function() {
         return promedioPonderado;
     }
 
-    function mostrarPromedioPonderado(promedioPonderado) {
-        const promedioPonderadoElement = document.getElementById('promedio-ponderado');
-        promedioPonderadoElement.textContent = `Promedio Ponderado: ${promedioPonderado.toFixed(2)}`;
+    const cerrarSesionBtn = document.getElementById('cerrar-sesion');
+    cerrarSesionBtn.addEventListener('click', function () {
+        localStorage.removeItem('user');
+        window.location.href = 'index.html';
+    });
+
+    function mostrarPromedio(promedio) {
+        const promedioEstudiante = document.getElementById('promedio-estudiante');
+        promedioEstudiante.innerHTML = `<p>Promedio del Estudiante: ${promedio.toFixed(2)}</p>`;
     }
 
-    const cerrarSesionBtn = document.getElementById('cerrar-sesion');
-    cerrarSesionBtn.addEventListener('click', function() {
-        localStorage.removeItem('user')
-        window.location.href = 'login.html';
-    });
 });
 
